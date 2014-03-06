@@ -6,12 +6,11 @@
 import os
 import sys
 
-assert len(sys.argv)>0, "A command line argument is required for this script. Enter one or many paths to search and update"
-
+assert len(sys.argv)>1, "A command line argument is required. Enter one or many paths to search and update"
 ext = '.py'
 old_str = ["wx.VERSION < (2, 9, 5)","wx.VERSION > (2, 9, 5)"]
 new_str = ["wx.version().find('classic')!=-1","wx.version().find('classic')==-1"]
-
+append = '_'
 # todo: implement run with a loop
 def run(current_dir):
 	os.chdir(current_dir)
@@ -52,5 +51,6 @@ def new_filename(old_name):
 
 
 if __name__ == '__main__':
-	for arg in sys.argv:
-	run(arg)
+	argv = sys.argv[1:]
+	for arg in argv:
+		run(arg)
