@@ -4,12 +4,16 @@
 
 
 import os
-root = 'D:\gui2py\gui2py'
+import sys
+
+assert: len(sys.argv)>0
+except:
+	print 'Incorrect number of arguments. To use this script, enter the path of your working directory.'
+
 ext = '.py'
-os.chdir(root)
-append = ''
 old_str = ["wx.VERSION < (2, 9, 5)","wx.VERSION > (2, 9, 5)"]
 new_str = ["wx.version().find('classic')!=-1","wx.version().find('classic')==-1"]
+
 # todo: implement run with a loop
 def run(current_dir):
 	os.chdir(current_dir)
@@ -50,4 +54,5 @@ def new_filename(old_name):
 
 
 if __name__ == '__main__':
-	run(root)
+	for arg in sys.argv:
+	run(arg)
